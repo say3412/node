@@ -1,0 +1,51 @@
+
+nest new my-shop
+cd my-shop
+
+nest g resource categories
+npm i class-validator class-transformer dotenv
+npm i @prisma/client@6
+npm i -D prisma@6 // -D: dev
+
+npx prisma init --datasource-provider sqlite
+
+model Category {
+  id Int @id @default(autoincrement())
+  name String @unique
+}
+
+npx prisma migrate dev --name init // DB 테이블 실제 생성
+
+nest g module prisma
+nest g service prisma --no-spec
+
+npx prisma generate // 스키마(모델 파일)을 실제 사용할 수 있는 DB 클라이언트 코드로 바뀌 줌
+npx prisma format // schema 파일을 정렬, 깨끗하게
+
+####
+schema.prisma : 사람이 만드는 DB 구조 설계도
+npx prisma migrate : DB 테이블 실제 생성
+npx prisma generate : 애플리케이션 코드에서 사용할 클라이언트 API(메소드) 생성
+
+만약 모델/필드가 추가/삭제/변경 되면 반드시 npx prisma generate 해줘야 함
+(prisma@6 사용하기 때문)
+
+generate client {
+  provider = "prisma-client-js"
+}
+
+node_modules/.prisma/client => @prisma/client (여기 계속해서 생성되어서 개발자는 API 호출하기만 하면 됨)
+
+
+nest g resouce products --no-spec // 내부 함수 없이 생성
+
+npx prisma migrate dev --name add_prodect
+npx prisma generate
+
+npm i class-transformer // 타입변환
+
+// 스웨거 설치
+npm i @nestjs/swagger
+
+main.transformer
+*/Controller/ts 

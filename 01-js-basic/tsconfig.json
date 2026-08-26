@@ -1,0 +1,7 @@
+{
+  "compilterOptions": {
+    "target": "es6",
+    "module": "CommonJS",
+    "experimentalDecorators": true
+  }
+}

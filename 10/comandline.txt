@@ -1,0 +1,17 @@
+chown -R $(whoami) .
+sudo chown -R $(whoami) /usr/local/lib/node_modules
+sudo chown -R $(whoami) ~/.npm
+
+npm i -g @nestjs/cli
+
+nest new my-app  
+
+cd my-app
+run start
+npm run start
+npm run start:dev // 바로 반영됨
+
+..10/my-app
+nest g resource posts
+npm i @nestjs/mapped-types class-validator
+npm i class-transformer
